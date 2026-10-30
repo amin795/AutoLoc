@@ -1,5 +1,6 @@
 package tn.esprit.autoloc.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.*;
@@ -28,6 +29,7 @@ public class Agence {
     private String telephone;
 
     // Saving an agency saves its vehicles; loading an agency loads its vehicles
+    @JsonManagedReference
     @OneToMany(mappedBy = "agence", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<Vehicule> vehicules = new ArrayList<>();
 
